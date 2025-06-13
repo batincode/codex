@@ -28,7 +28,8 @@ def upload_file():
     file = request.files['file']
     if file.filename == '' or not allowed_file(file.filename):
         return redirect(url_for('index'))
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
+    filename = secure_filename(file.filename)
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(filepath)
 
     scores = analyze_emotions(filepath)
