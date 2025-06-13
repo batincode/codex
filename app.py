@@ -32,6 +32,7 @@ def upload_file():
     file.save(filepath)
 
     scores = analyze_emotions(filepath)
+    os.remove(filepath)
     passed = all(score > 5 for score in scores.values()) if scores else False
 
     return render_template('result.html', scores=scores, passed=passed)
