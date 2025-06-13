@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Analysis Result</title>
+</head>
+<body>
+    <h1>Analysis Result</h1>
+    {% if scores %}
+    <ul>
+        {% for emotion, score in scores.items() %}
+        <li>{{ emotion }}: {{ score | round(2) }}/10</li>
+        {% endfor %}
+    </ul>
+    <p>Status: <strong>{{ 'Pass' if passed else 'Fail' }}</strong></p>
+    {% else %}
+    <p>No faces detected.</p>
+    {% endif %}
+    <a href="/">Back</a>
+</body>
+</html>
