@@ -14,8 +14,12 @@ See `requirements.txt` for Python dependencies. You can install them with:
 pip install -r requirements.txt
 ```
 
-This app also uses [MoviePy](https://zulko.github.io/moviepy/) for handling video
-files, which in turn may require `ffmpeg` to be installed on your system.
+This command installs all required Python packages, including
+[MoviePy](https://zulko.github.io/moviepy/).
+MoviePy relies on `ffmpeg` for video processing, so ensure `ffmpeg` is installed
+and available on your `PATH`.
+If you still see `ModuleNotFoundError: No module named 'moviepy.editor'`, run
+`pip install moviepy` to ensure the package is available.
 
 ## Running
 
