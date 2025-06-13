@@ -14,6 +14,9 @@ See `requirements.txt` for Python dependencies. You can install them with:
 pip install -r requirements.txt
 ```
 
+This app also uses [MoviePy](https://zulko.github.io/moviepy/) for handling video
+files, which in turn may require `ffmpeg` to be installed on your system.
+
 ## Running
 
 ```bash
