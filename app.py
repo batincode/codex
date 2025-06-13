@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
-from analysis import analyze_emotions
+from analysis import full_analysis
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'mp4', 'avi', 'mov', 'mkv'}
@@ -30,10 +30,11 @@ def upload_file():
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
 
-    scores = analyze_emotions(filepath)
+    results = full_analysis(filepath)
+    scores = results.get('faces', {})
     passed = all(score > 5 for score in scores.values()) if scores else False
 
-    return render_template('result.html', scores=scores, passed=passed)
+    return render_template('result.html', results=results, passed=passed)
 
 
 if __name__ == '__main__':

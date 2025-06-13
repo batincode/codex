@@ -6,9 +6,9 @@
 </head>
 <body>
     <h1>Analysis Result</h1>
-    {% if scores %}
+    {% if results.faces %}
     <ul>
-        {% for emotion, score in scores.items() %}
+        {% for emotion, score in results.faces.items() %}
         <li>{{ emotion }}: {{ score | round(2) }}/10</li>
         {% endfor %}
     </ul>
@@ -16,6 +16,16 @@
     {% else %}
     <p>No faces detected.</p>
     {% endif %}
+    <h2>Audio Features</h2>
+    <ul>
+        {% for feature, value in results.audio.items() %}
+        <li>{{ feature }}: {{ value | round(2) }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Transcript</h2>
+    <p>{{ results.transcript }}</p>
+    <h2>Honesty Analysis</h2>
+    <p>{{ results.honesty }}</p>
     <a href="/">Back</a>
 </body>
 </html>

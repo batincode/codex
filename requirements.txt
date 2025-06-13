@@ -1,3 +1,7 @@
 Flask
 opencv-python
 fer
+moviepy
+pyAudioAnalysis
+whisper
+openai
